@@ -1,0 +1,51 @@
+.account{
+    display: flex;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+    justify-content: space-between;
+    padding-top: 10vh;
+}
+.side{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    height: 90vh;
+}
+.sideContent{
+    width: 50%;
+    text-align: center;
+    background-color: var(--themeColor);
+    color:white;
+    padding:0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.sideContent:hover{
+    opacity: 0.8;
+
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 90vh;
+
+}
+
+.main form{
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    height: 20vh;
+    justify-content: space-between;
+    align-items: center;
+}
+.main form button{
+    width: 10vw;
+    margin: 0.5rem;
+}
+.formGroup{
+    margin-top: 0.5rem;
+}

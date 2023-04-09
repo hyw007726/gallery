@@ -1,0 +1,21 @@
+.iconLayer{
+    position: absolute;
+    top: 40vh;
+    width:68vw;
+    height:5vw;
+    display: flex;
+    justify-content: space-between;
+    padding:0 0.5vw;
+}
+.leftIcon {
+
+}
+.rightIcon {
+
+}
+.groupContainer{
+    height: fit-content;
+    width:60vw;
+    display: flex;
+    position:relative;
+}

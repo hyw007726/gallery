@@ -1,0 +1,137 @@
+.mainContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  max-height: 70vh;
+
+  margin-top: 1vh;
+  width: 90vw;
+  border: #845858 0.1rem dashed;
+  overflow: scroll;
+}
+.addContainer {
+  width: 20vw;
+  height: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1vh 5vw;
+  border: #845858 2px solid;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  box-shadow: inset 5px 5px 1px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 4vh;
+}
+.itemContainer {
+  width: 20vw;
+  height: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1vh 5vw;
+  border: #845858 2px solid;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  box-shadow: inset 5px 5px 1px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 4vh;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.removeButton {
+  background-color: #ff3d3d;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-top: 1vh;
+}
+.captionLine {
+  position: relative;
+  bottom: -25%;
+  width: 20vw;
+  display: flex;
+  justify-content: space-between;
+}
+.label {
+  padding-right: 1vw;
+  width: 4vw;
+  font-style: italic;
+}
+
+.textInput {
+  width: 15vw;
+  border-style: none;
+  outline: none;
+  border-bottom-style: dashed;
+  text-align: center;
+  font-style: italic;
+}
+.textInput:focus {
+  width: 15vw;
+  border-style: none;
+  border-bottom-style: dashed;
+}
+
+.addIcon {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  width: 10vw;
+  height: 10vw;
+  fill: var(--themeColor);
+}
+.addIconText {
+  display: block;
+  text-align: center;
+}
+.buttonWrapper {
+  position: absolute;
+  top: 85vh;
+  left: 40vw;
+  width: 20vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit {
+  width: 90%;
+  padding: 1vw 0;
+  border-radius: 4px;
+  font-size: 2vw;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  cursor: pointer;
+}
+.submit:hover {
+  background-color: #0069d9;
+}
+
+.submit:active {
+  background-color: #0053a3;
+}
+
+.submit:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+.spin {
+  float: right;
+  width: 0;
+  transform: translateX(2vw);
+  display: none;
+}

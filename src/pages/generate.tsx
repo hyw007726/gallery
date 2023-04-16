@@ -23,7 +23,8 @@ useEffect(()=>{
     if(!currentUser){
       notification.warning({
             message: `You haven't logged in!`,
-            description: `The images won't be saved! Sign up with us to save and share your imagination!`
+            description: `Your imagination won't be saved! Sign up with us to save and share your big picture!`,
+            duration: 5,
           });
     }
 },[currentUser])
@@ -48,7 +49,7 @@ useEffect(()=>{
       .createImage({
         prompt: prompt,
         n: 1,
-        size: "1024x1024",
+        size: currentUser?"1024x1024":"256x256",
       })
       .then((res) => {
         // console.log(res.data.data[0].url);
@@ -67,14 +68,14 @@ useEffect(()=>{
                
             }else{
                 message.error("Can't upload generated image");
-  
+                setLoading(false);
             }
             });
             
         }
       }).catch((err)=>{
           message.error("Illegal prompt! Please try again!");
-
+          setLoading(false);
         });
   };
 
@@ -103,6 +104,7 @@ useEffect(()=>{
       {generated && (
         <div>
                  <Image
+                    style={{width:currentUser?"60vw":"20vw"}}
                    className={styles.generatedImage}
                    src={generated}
                    width={300}

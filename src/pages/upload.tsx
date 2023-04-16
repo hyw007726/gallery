@@ -15,7 +15,7 @@ function Upload() {
   const [imageList, setImageList] = React.useState<FileList | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const {currentUser} = useContext(AuthContext);
- 
+ const [uploading, setUploading] = React.useState<boolean>(false);
   const handleCaptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const index = parseInt(e.target.id);
     const caption = e.target.value;
@@ -95,7 +95,7 @@ function Upload() {
       message.error("Please select at least one image");
       return;
     }
-   
+   setUploading(true);
     uploadFormData(currentUser, formData).then((res) => {
 
       if(res.status === 200) {
@@ -104,6 +104,7 @@ function Upload() {
         setCaptionList([]);
         router.push('/my_space');
       }
+      setUploading(false);
     });
   };
   return (
@@ -165,12 +166,10 @@ function Upload() {
             );
           })}
         <div className={styles.buttonWrapper}>
-        <button className={styles.submit} onClick={()=>handleSubmit()}>
-          Upload   <Spin className={styles.spin} indicator={antIcon}/> 
+        <button disabled={uploading} className={styles.submit} onClick={()=>handleSubmit()}>
+          {uploading?"Uplaoding...": "Upload"}
         </button>
         </div>
-
-         
       {/* </form> */}
     </div>
   );

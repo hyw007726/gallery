@@ -6,12 +6,13 @@ import { message, Skeleton } from "antd";
 import { Card, Space } from "antd";
 import AuthContext from "@/components/context/AuthContext";
 import { userModel } from "@/types/userModel";
-
+import { Spin } from 'antd';
 function Account() {
   const [avatar, setAvatar] = useState<File | null>(null);
   const { currentUser, setCurrentUser } = useContext(AuthContext);
   const [avatarPath, setAvatarPath] = useState<string>("");
   const [nickname, setNickname] = useState(currentUser?.nickname ?? "");
+  const [uploading, setUploading] = React.useState<boolean>(false);
   if (!currentUser) {
     return <div className={styles.noImages}>Please login first</div>;
   }
@@ -26,13 +27,18 @@ function Account() {
     if (avatar) {
       formData.append("avatar", avatar);
     }
-
+    setUploading(true);
     const newProfile: userModel = await uploadProfile(currentUser.id, formData);
     if (newProfile && newProfile.avatarPath) {
       setAvatarPath(newProfile.avatarPath);
       message.success("Profile updated");
       setCurrentUser(newProfile);
+      setUploading(false);
+    } else {
+      message.error("Failed to update profile");
+      setUploading(false);
     }
+    
   };
 
   return (
@@ -105,7 +111,7 @@ function Account() {
             </Card>
           </Space>
 
-          <button type="submit">Submit</button>
+          <button disabled={uploading} type="submit">{uploading?"Submitting":"Submit"}</button>
         </form>
       </div>
     </div>

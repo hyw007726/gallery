@@ -11,6 +11,8 @@ import { message } from "antd";
 import { HeartTwoTone, HeartFilled } from "@ant-design/icons";
 import styles from "@/styles/components/Comment.module.css";
 import AuthContext from "./context/AuthContext";
+import  keywords  from "@/utils/dangerousWords";
+
 function Comment(props: { imageId: number,comments:CommentModel[] }) {
   const { TextArea } = Input;
   const [value, setValue] = useState("");
@@ -87,6 +89,15 @@ function Comment(props: { imageId: number,comments:CommentModel[] }) {
       message.warning("Please input content");
       return;
     }
+    //validate input
+      for (let i = 0; i < keywords.length; i++) {
+        if (value.includes(keywords[i])) {
+          message.warning("Your input is illegal!");
+          setValue("");
+          return;
+        }
+      }
+    
     if (editId) {
       editComment(editId, value).then((res) => {
         if (res) {

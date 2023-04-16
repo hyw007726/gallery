@@ -21,7 +21,7 @@ import { userModel } from '@/types/userModel';
 import {getProfile,handleOAuthEmail} from '@/services/getProfile';
 import {message} from 'antd';
 import getConfig from 'next/config'
-
+import { notification } from 'antd';
 
 
 export default function App({ Component, pageProps}: AppProps) {
@@ -43,6 +43,17 @@ useEffect(  () => {
   }
   }
   fetchInitialProps();
+}, []);
+
+useEffect(() => {
+  if(!sessionStorage.getItem('id')||!currentUser){
+  notification.success({
+    message: `Welcome to AI Gallery!`,
+    description: `Try out OpenAI's DALL·E model, which generates images based on text input! You can login, comment, upload, and let your imagination run wild. Give it a try and see what kind of images you can create!`,
+    placement: 'bottomLeft',
+    duration:100,
+  });
+}
 }, []);
 
 useEffect(() => {

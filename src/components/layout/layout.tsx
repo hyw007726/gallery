@@ -14,7 +14,7 @@ import generateRandomId from "@/utils/generateRandomId";
 import Avatar from "react-avatar";
 import { useSession } from "next-auth/react";
 import { signIn, signOut } from "next-auth/react";
-import type { MenuProps } from "antd";
+import { MenuProps, notification } from "antd";
 import { Button, Dropdown, message } from "antd";
 import getConfig from 'next/config'
 const {publicRuntimeConfig} = getConfig();
@@ -56,8 +56,10 @@ const Layout = ({
       key: "signup",
       label: "Sign up with email",
       onClick: () => {
+        notification.info({message:"Your password will be encrypted before being saved to database."});
         setFrameSrc(publicRuntimeConfig.HOST+"/auth/sign_up");
         setShowAuth(true);
+        notification.info({message:"It takes time to send verification code via email. Please be patient. If you haven't receievd the email, please check your spam folder.",duration:20});
       },
     },
     // {
@@ -136,6 +138,13 @@ const Layout = ({
                 AiGallery
               </Link>
             </li>
+            <li
+                  className={styles.navItem}
+                  id="home"
+                  onClick={() => router.push("/")}
+                >
+                  Home
+                </li>
                 <li
                   className={styles.navItem}
                   id="generate"
@@ -143,6 +152,7 @@ const Layout = ({
                 >
                   Generate
                 </li>
+                
             {isAuthed && (
               <>
                 <li

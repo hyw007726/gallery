@@ -28,24 +28,24 @@ function ImageContainer(props: {
   //   //
   //   setIsModalOpenRemove(false);
   // };
-  const [blurredImageUrl, setBlurredImageUrl] = useState<string>("");
+  // const [blurredImageUrl, setBlurredImageUrl] = useState<string>("");
 
-  useEffect(() => {
-    if(props.image.filename.substring(0,4)!=='http'){
-      return;
-    }
-    async function fetchBlurredImage() {
-      try {
-        const response = await fetch(`/api/sharp?url=${encodeURIComponent(props.image.filename)}`);
-        const url = await response.text();
-        setBlurredImageUrl(url);
-      } catch (error) {
-        console.error('Failed to fetch blurred image:', error);
-      }
-    }
+  // useEffect(() => {
+  //   if(props.image.filename.substring(0,4)!=='http'){
+  //     return;
+  //   }
+  //   async function fetchBlurredImage() {
+  //     try {
+  //       const response = await fetch(`/api/sharp?url=${encodeURIComponent(props.image.filename)}`);
+  //       const url = await response.text();
+  //       setBlurredImageUrl(url);
+  //     } catch (error) {
+  //       console.error('Failed to fetch blurred image:', error);
+  //     }
+  //   }
 
-    fetchBlurredImage();
-  });
+  //   fetchBlurredImage();
+  // });
 
   const handleOkRemove = () => {
     handeDelete();
@@ -159,8 +159,8 @@ function ImageContainer(props: {
           alt=""
           priority={props.inViewImageIndex == 0 ? true : false}
           loading={props.inViewImageIndex == 0 ? "eager" : "lazy"}
-          placeholder="blur"
-          blurDataURL={blurredImageUrl?blurredImageUrl:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0uHq1FAAFqAJh7g/ptAAAAABJRU5ErkJggg=="}
+          // placeholder="blur"
+          // blurDataURL={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAQlBMVEUAAAAVFRUzMzM0NDRDQ0NFVVVXt7e3h4eGRkZHh4eHl5eX19fXx8fHx8fHyAgICBwcHB+fn5ISEhHR0dISEiIiJubm5GRkZJSUlKSkpPT09SUlJUVFRXV1dYWFhZWVlbW1tdXV1eXl5fHx8gICAiIiIjIyMkJCQlJSUmJiYnJycoKCgpKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo8PD09PT4+Pj5BQUFGRkZJSUlKTk5OVVVVWVlZWlpaXl5eYGBhYWFiYmJkZGRlZWVnZ2dpaWlrZWVsbGxubm5xcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp9fX19gYGBhYWFhYmJiY2NjZGRkZWVlZmZmaWlpamJiYmpqbGxsdHR0dXV1d2dnZmZmam5ubnJycnZ2dnd3d3h4eXl5enp6enp9fX19gYGBhYWFiYmJiY2NjZGRkZWVlZmZmaWlpamJiYmpqbGxsdHR0dXV1d2dnZmZmam5ubnJycnZ2dnd3d3h4eXl5enp6enp9fX19gYGBhYWFiYmJiY2NjZGRkZWVlZmZmaWlpamJiYmpqbGxsdHR0dXV1d2dnZmZmam5ubnJycnZ2dnd3d3h4eXl5enp6enp9fX19gYGBhYWFiYmJiY2NjZGRkZWVlZmZmaWlpamJiYmpqbGxsdHR0dXV1d2dnZmZmam5ubnJycnZ2dnd3d3h4eXl5enp6enp9fX19gYGBhYWFiYmJiY2NjZGRkZWVlZmZmaWlpamJiYmpqbGxsdHR0dXV1d2dnZmZmam5ubnJycnZ2dnd3d3h4eXl5enp6enp9fX19gYGBhYWFiYmJiY2NjZGRkZWVlZmZmaWlpamJiYmpqbGxsdHR0dXV1d2dnZmZmam5ubnJyc"}
         />
         <div style={{ display: "none" }}>
           <ImageAnt.PreviewGroup

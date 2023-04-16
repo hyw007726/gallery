@@ -13,7 +13,7 @@ const About: React.FC = () => {
        <p>There are basically three entities or data models: Users, Images and Comments. I used JPA to map the object with the tables in backend, and created TypeScript types for the three models in frontend.</p>
        <p>For authentication,  the GitHub login is done with OAuth, but the email sign-up and login section is developed independently with Java&apos;s Thymeleaf template. Google&apos;s auth is okay in local environment but it requires domain name in production.</p>
       <p>User&apos;s password will be encrypted first before being saved in database. If you login with a GitHub account for the first time, you&apos;ll receive an email with a code for tradional login, so you won&apos;t have duplicate accounts with the same email address.</p>
-      <p>For user&apos;s input sanitization, I set a list of keywords such as eval to avoid cross-site scripting attacks. Spring Boot&apos;s JAP also defends against SQL injection by default.</p>
+      <p>For user&apos;s input sanitization, I set a list of keywords such as eval to avoid cross-site scripting attacks. Spring Boot&apos;s JPA also defends against SQL injection by default.</p>
       </div>
       <h4>&nbsp;&nbsp;GitHub repos: </h4>
        <h5>&nbsp;&nbsp;&nbsp;&nbsp; https://github.com/hyw007726/gallery &#40;frontend:&#41;</h5>

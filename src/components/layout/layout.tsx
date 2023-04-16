@@ -115,8 +115,7 @@ const Layout = ({
       sessionStorage.removeItem("id");
       sessionStorage.removeItem("image");
       sessionStorage.removeItem("name");
-      signOut();
-      router.push("/");
+      signOut({ callbackUrl: "/"});
     }
   };
 
@@ -131,12 +130,19 @@ const Layout = ({
       <header className={styles.header}>
         <nav className={styles.nav}>
           <HeaderLogo className={styles.icon} />
-          <ul className={styles.navList}>
+          <ul style={{fontFamily:"Impact"}}  className={styles.navList}>
             <li className={styles.navItem}>
               <Link className={styles.link} href="/">
-                Gallery
+                AiGallery
               </Link>
             </li>
+                <li
+                  className={styles.navItem}
+                  id="generate"
+                  onClick={() => router.push("/generate")}
+                >
+                  Generate
+                </li>
             {isAuthed && (
               <>
                 <li
@@ -144,8 +150,9 @@ const Layout = ({
                   id="space"
                   onClick={() => router.push("/my_space")}
                 >
-                  My space
+                  MySpace
                 </li>
+               
                 {" "}
                 <li
                   className={styles.navItem}
@@ -173,6 +180,14 @@ const Layout = ({
                 </li>
               </>
             )}
+             {" "}
+                <li
+                  className={styles.navItem}
+                  id="about"
+                  onClick={() => router.push("/about")}
+                >
+                  About
+                </li>
           </ul>
         </nav>
         <div className={styles.navItem}>

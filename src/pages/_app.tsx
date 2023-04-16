@@ -46,40 +46,53 @@ useEffect(  () => {
 }, []);
 
 useEffect(() => {
-  //Handle oauth login
-   getSession().then(res=>{
-    if(res?.user?.email){
-      const currentUser : userModel ={
-        id:0,
-        email:res.user.email,
-        nickname:res.user.name??res.user.email,
-        avatarPath:res.user.image??undefined,
-      }
-      handleOAuthEmail(currentUser).then(res=>{
-        if(res){
-          console.log(res);
-        setCurrentUser(res);
-        setIsAuthed(true);
-        }else{
-          console.log(res);
-          message.config({
-            top: 300,
-            duration: 5,
-          })
-          message.error("Email already exists. Please login with email.");
-          signOut();
-        }
-      }
-      )
-    }
-    // if(res?.user?.name){
-    //   sessionStorage.setItem('name', res.user.name);
+  const userId = sessionStorage.getItem('id');
 
-    // }
-    // if(res?.user?.image){
-    //   sessionStorage.setItem('image', res.user.image);
-    // }
-  })
+  if(userId){
+  
+    getProfile(parseInt(userId)).then(res=>{
+      setCurrentUser(res);
+      setIsAuthed(true);
+    }
+    )
+  }else{
+    getSession().then(res=>{
+      if(res?.user?.email){
+        const currentUser : userModel ={
+          id:0,
+          email:res.user.email,
+          nickname:res.user.name??res.user.email,
+          avatarPath:res.user.image??undefined,
+        }
+        handleOAuthEmail(currentUser).then(res=>{
+          if(res){
+            console.log(res);
+            sessionStorage.setItem('id', res.id.toString());
+          setCurrentUser(res);
+          setIsAuthed(true);
+          }else{
+            console.log(res);
+            message.config({
+              top: 300,
+              duration: 5,
+            })
+            message.error("Email already exists. Please login with email.");
+            signOut();
+          }
+        }
+        )
+      }
+      // if(res?.user?.name){
+      //   sessionStorage.setItem('name', res.user.name);
+  
+      // }
+      // if(res?.user?.image){
+      //   sessionStorage.setItem('image', res.user.image);
+      // }
+    })
+  }
+  //Handle oauth login
+
   // if(typeof window !== 'undefined'){
   //   const user=sessionStorage.getItem('user');
   //   if(user){

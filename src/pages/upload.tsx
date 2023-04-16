@@ -132,6 +132,20 @@ function Upload() {
             // console.log(image.name);
             return (
               <div className={styles.itemContainer} key={index}>
+                  <div className={styles.captionLine}>
+                  <label className={styles.label} htmlFor={index + ""}>
+                    Title:
+                  </label>
+                  <input
+                    className={styles.textInput}
+                    type="text"
+                    id={index + ""}
+                    name={index + ""}
+                    value={captionList[index] || "Untitled"}
+                    onChange={handleCaptionChange}
+                    required
+                  />
+                </div>
                 <Image
                   className={styles.image}
                   src={URL.createObjectURL(image)}
@@ -146,20 +160,7 @@ function Upload() {
                 >
                   Remove
                 </button>
-                <div className={styles.captionLine}>
-                  <label className={styles.label} htmlFor={index + ""}>
-                    Title:
-                  </label>
-                  <input
-                    className={styles.textInput}
-                    type="text"
-                    id={index + ""}
-                    name={index + ""}
-                    value={captionList[index] || "Untitled"}
-                    onChange={handleCaptionChange}
-                    required
-                  />
-                </div>
+              
               </div>
             );
           })}

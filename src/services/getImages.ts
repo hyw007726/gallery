@@ -21,7 +21,7 @@ export async function getImages(daysBefore:number) {
         image.comments=data.comments;
         return image;
       });
-      console.log(images);
+      // console.log(images);
       return images;
     }else{
       return [];

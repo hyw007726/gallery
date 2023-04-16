@@ -50,7 +50,7 @@ export default function My_space(){
     // console.log(item.uploadTime);
     for (let i = 0; i < timestamps.length; i++) {
       if (item.uploadTime > timestamps[i]) {
-        imageGroups[i].push(item);
+        imageGroups[i].unshift(item);
         break;
       }
     }

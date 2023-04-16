@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ImageModel } from "@/types/imageModel";
 import styles from "@/styles/components/ImageContainer.module.css";
 import Image from "next/image";
@@ -28,6 +28,24 @@ function ImageContainer(props: {
   //   //
   //   setIsModalOpenRemove(false);
   // };
+  const [blurredImageUrl, setBlurredImageUrl] = useState<string>("");
+
+  useEffect(() => {
+    if(props.image.filename.substring(0,4)!=='http'){
+      return;
+    }
+    async function fetchBlurredImage() {
+      try {
+        const response = await fetch(`/api/sharp?url=${encodeURIComponent(props.image.filename)}`);
+        const url = await response.text();
+        setBlurredImageUrl(url);
+      } catch (error) {
+        console.error('Failed to fetch blurred image:', error);
+      }
+    }
+
+    fetchBlurredImage();
+  });
 
   const handleOkRemove = () => {
     handeDelete();
@@ -139,9 +157,10 @@ function ImageContainer(props: {
           width={500}
           height={500}
           alt=""
-          unoptimized={true}
           priority={props.inViewImageIndex == 0 ? true : false}
           loading={props.inViewImageIndex == 0 ? "eager" : "lazy"}
+          placeholder="blur"
+          blurDataURL={blurredImageUrl?blurredImageUrl:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0uHq1FAAFqAJh7g/ptAAAAABJRU5ErkJggg=="}
         />
         <div style={{ display: "none" }}>
           <ImageAnt.PreviewGroup

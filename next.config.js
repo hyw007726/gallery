@@ -11,6 +11,8 @@ const nextConfig = {
     // UPLOADS_FOLDER:"http://localhost:8080/uploads/",
     // HOST:"http://localhost:8080",
     // PAGE_ENTRY:"http://localhost:3000",
+    OPENAI_API_KEY:"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",
+    OPENAI_ORG:"org-HtFHdnnhyCUhfe2o7YJA3n04",
   },
   reactStrictMode: true,
   webpack(config) {
@@ -23,17 +25,23 @@ const nextConfig = {
   },
   images:{
     remotePatterns: [
-      {
-        protocol: 'http',
-        hostname: '**',
-      },
+      // {
+      //   protocol: 'http',
+      //   hostname: '39.107.24.84',
+      //   port: '8080',
+      //   pathname: '/uploads/**',
+      // },
       {
         protocol: 'https',
         hostname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
       }
     ],
-    domains: ['http://39.107.24.84'],
-    unoptimized: true,
+    domains: ['http://39.107.24.84:4000','http://39.107.24.84:8080'],
+    // unoptimized: true,
   }
 }
 

@@ -198,7 +198,7 @@ function Comment(props: { imageId: number,comments:CommentModel[] }) {
         ) : null}
         <Button    disabled={!currentUser||!currentUser.id}
  onClick={() => handleSubmit(false)}>
-          {editId ? "Update" : "Submit"}
+          {editId ? "Update" : "Send"}
         </Button>
       </div>
     </>

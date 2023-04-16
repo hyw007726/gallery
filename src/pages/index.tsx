@@ -59,10 +59,9 @@ export default function Home(props: {
   }
 
   images?.forEach((item) => {
-
     for (let i = 0; i < timestamps.length; i++) {
       if (item.uploadTime > timestamps[i]) {
-        imageGroups[i].push(item);
+        imageGroups[i].unshift(item);
         break;
       }
     }

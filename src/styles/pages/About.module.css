@@ -1,0 +1,19 @@
+.container {
+    width:80vw;
+    margin: 0 auto;
+    padding: 2vh 2vw;
+    font-size: large;
+  }
+  .title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1vh 1vw;
+    font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  }
+.paragraphs{
+    font-size: large;
+    line-height: 1.2rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-indent: 2rem;
+    margin: 1vh 1vw;
+  } 

@@ -19,3 +19,22 @@
     display: flex;
     position:relative;
 }
+@keyframes slide {
+    from {
+      left: var(--fromLeft);
+    }
+    to {
+      left: var(--toLeft);
+    }
+  }
+.card{
+  position: absolute;
+  top: 32.5vh;
+  left:-19vw;
+}
+@media screen and (max-width: 768px) {
+  .card{
+    display: none;
+  }
+}
+  

@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+    margin-top:5vh;
+}
+.textArea{
+    margin: 2vh auto;
+    width: 60vw;
+    height: 20vh;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #000000;
+    background-color: #FFFFFF;
+    resize: none;
+    outline: none;
+}
+.generatedImage{
+    width: 60vw;
+    height: fit-content;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 2vh auto;
+}
+.spin{
+    width:0;
+    position: relative;
+    left: 1vw;
+    transform: scale(0.2);
+}

@@ -38,10 +38,12 @@
 }
 
 .caption {
-  font-size: 1.5rem;
   font-weight: bold;
   margin-top: 0.5rem;
   width: 100%;
+  text-overflow: ellipsis;
+  font-size: 1rem;
+  white-space: nowrap;
 }
 .imageContainer{  
   height: fit-content;
@@ -51,7 +53,7 @@
 .image{
   border: 2px solid black;
   border-radius: 10px;
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5),-3px -3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1),-3px -3px 3px rgba(0, 0, 0, 0.1);
   height: 60vh;
   width:60vw;
 }
